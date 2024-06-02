@@ -1,20 +1,42 @@
 @font-face {
     font-family: "Rigthteous-Regular";
     src: url(../assets/fonts/Righteous-Regular.ttf);
+    font-weight: 400;
 }
 
 :root{
     --fuente: 'Rigthteous-Regular';
     --primario:rgb(0, 119, 255);
     --segundario: rgb(220, 80, 255);
+    --terciario: #6857ff;
+    --cuarto:#5e19ff;
+    --color-blur: rgba(0, 0, 0, .295);
+    --fondo_costraste: rgb(0, 6, 15);
+    --fondo_contraste2: rgb(0, 11, 27);
+    --color_gradiente: linear-gradient(77deg, rgb(0, 26, 255), rgb(255, 0, 157));
+    --color_gradiente2: linear-gradient(77deg, rgb(0, 26, 255), rgb(255, 0, 157), rgb(0, 217, 255), pink, rgb(255, 0, 43), rgb(119, 0, 255));
+    --trasparenteBorroso: blur(10px);
+}
+
+header{
+    position: fixed;
+    top: 0;
+    width:100%;
+    z-index: 1;
+}
+
+.header-scroll{
+    background:var(--color-blur);
+    --webkit-backdrop-filter: var(var(--trasparenteBorroso));
+    backdrop-filter:var(--trasparenteBorroso);
 }
 
 .container-header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 10rem;
     align-items: center;
-    padding: 1rem;
+    padding: 0px 20px 0px 20px;
 }
 
 .nav_logo{
@@ -44,6 +66,7 @@
   font-size: 1.5rem;
 }
 
+
 a:hover::before{
     position: absolute;
     content: "";
@@ -60,8 +83,7 @@ a:hover::before{
     justify-content: center;
     width: 3rem;
     height: 4rem;
-    opacity: 0;
-    visibility: hidden;
+    display: none;
 }
 .menu_toggle div{
     height: .3rem;
@@ -72,8 +94,7 @@ a:hover::before{
 
 @media screen and (max-width:700px) {
     .menu_toggle{
-        opacity: 1;
-        visibility: visible;
+        display: flex;
     }
     .header{
         position: relative;
@@ -90,8 +111,9 @@ a:hover::before{
         top: 9rem;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, .295);
+        background: var(--color-blur);
         backdrop-filter: blur(10px);
+        display: none;
     }
 
     .link_menu a{
@@ -109,3 +131,96 @@ a:hover::before{
     }
 
 }
+
+/* Estilos del Banner */
+
+.container-flash{
+    position: relative;
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10rem;
+}
+
+.flash{
+    position:absolute;
+    width: 25rem;
+    height: 25rem;
+    background-color: var(--primario);
+    margin: 0 auto;
+    border-radius: 50%;
+    filter: blur(150px);
+    animation: blur 2s infinite alternate;
+}
+
+@keyframes blur {
+    from{
+        opacity: .8;
+    }
+    to{
+        opacity: .4;
+    }
+}
+
+.container-info__banner{
+    line-height: 4rem;
+}
+
+.container-info__banner p{
+    font-weight: bold;
+}
+
+.container-info__banner p:nth-child(1){
+    font-size: 3.5rem;
+}
+
+.container-info__banner p:nth-child(2){
+    font-size: 5rem;
+}
+
+.container-info__banner span{
+    font-family: var(--fuente);
+    font-weight: 900;
+    color: var(--primario);
+    animation: moveColor 8s infinite alternate;
+}
+
+@keyframes moveColor {
+  
+   0%{
+    color: var(--segundario);
+   }
+   50%{
+    color: var(--terciario);
+   }
+   100%{
+    color: var(--segundario);
+   }
+
+}
+
+.container-info__banner p:nth-child(3){
+    font-size: 2rem;
+    color: #929090;
+    margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
